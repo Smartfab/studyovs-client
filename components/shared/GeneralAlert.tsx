@@ -60,31 +60,32 @@ const Styles = styled.div`
 `
 
 export default function GeneralAlert() {
-  const [alert, setAlert] = useState(null)
-  useQuery(['alert'], getAlert, {
-    onSuccess: (alert) => {
-      if (alert?._id) {
-        const isCancelledAlert = JSON.parse(localStorage.getItem(alert._id))
-        if (!isCancelledAlert) {
-          setShow(true)
-          setAlert(alert)
-          return
-        }
-      }
-      return
-    },
-  })
-  const [show, setShow] = useState(true)
-  const handleCancel = () => {
-    setShow(false)
-    localStorage.setItem(alert._id, JSON.stringify(true))
-  }
-  const router = useRouter()
+  // const [alert, setAlert] = useState(null)
+  // useQuery(['alert'], getAlert, {
+  //   onSuccess: (alert) => {
+  //     if (alert?._id) {
+  //       const isCancelledAlert = JSON.parse(localStorage.getItem(alert._id))
+  //       if (!isCancelledAlert) {
+  //         setShow(true)
+  //         setAlert(alert)
+  //         return
+  //       }
+  //     }
+  //     return
+  //   },
+  // })
+  // const [show, setShow] = useState(true)
+  // const handleCancel = () => {
+  //   setShow(false)
+  //   localStorage.setItem(alert._id, JSON.stringify(true))
+  // }
+  // const router = useRouter()
 
-  if (!show) return null
+  // if (!show) return null
   return (
     <>
-      {alert ? (
+      <p>Hello</p>
+      {/* {alert ? (
         <>
           <Styles>
             <PaddingResizer>
@@ -107,7 +108,7 @@ export default function GeneralAlert() {
             </PaddingResizer>
           </Styles>
         </>
-      ) : null}
+      ) : null} */}
     </>
   )
 }

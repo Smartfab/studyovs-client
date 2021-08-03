@@ -1,8 +1,8 @@
 export default {
   apiBaseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
   clientName: process.env.NEXT_PUBLIC_BASE_NAME,
-  isProduction: false,
-  // isProduction: process.env.NODE_ENV === 'production',
+  // isProduction: false,
+  isProduction: process.env.NODE_ENV === 'production',
   payment: {
     paystack: {
       publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,

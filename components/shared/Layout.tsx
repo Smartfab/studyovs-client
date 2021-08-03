@@ -26,10 +26,8 @@ export default function Layout({
   return (
     <Styles>
       <Header page={page} />
-      <div className="children">
-        <GeneralAlert />
-        {children}
-      </div>
+      {/* <GeneralAlert /> */}
+      <div className="children">{children}</div>
       <Footer />
     </Styles>
   )
