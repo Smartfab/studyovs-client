@@ -10,7 +10,7 @@ export function useAnalytics() {
 }
 
 export default function AnalyticsProvider({ children }) {
-  const [ip, setIp] = useState(null)
+  const [ip, setIp] = useState({})
   const [device, setDevice] = useState(null)
   const getIp = async () => {
     const ip = await getUserLocation()
@@ -33,14 +33,16 @@ export default function AnalyticsProvider({ children }) {
   }
 
   return (
-    <AnalyticsContext.Provider
-      value={{
-        ip,
-        device,
-        recordPageVisit,
-      }}
-    >
-      {children}
-    </AnalyticsContext.Provider>
+    <>
+      <AnalyticsContext.Provider
+        value={{
+          ip,
+          device,
+          recordPageVisit,
+        }}
+      >
+        {children}
+      </AnalyticsContext.Provider>
+    </>
   )
 }
