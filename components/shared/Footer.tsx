@@ -11,6 +11,7 @@ import Logo from './Logo'
 const Styles = styled.div`
   background: #000000;
   color: #fff;
+  z-index: 999999;
   margin-top: 30px;
   .footer-links {
     display: flex;

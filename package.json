@@ -15,6 +15,7 @@
     "@material-ui/styles": "^4.11.3",
     "@react-icons/all-files": "^4.1.0",
     "@types/react-query": "^1.1.2",
+    "@webcomponents/shadydom": "^1.9.0",
     "@zeit/next-css": "^1.0.1",
     "axios": "^0.21.1",
     "detect-browser": "^4.8.0",

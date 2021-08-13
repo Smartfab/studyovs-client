@@ -7,6 +7,7 @@ const Styles = styled(motion.div)`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  z-index: 121;
   .title {
     font-weight: bold;
     font-size: 24px;

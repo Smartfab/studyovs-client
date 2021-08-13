@@ -148,11 +148,8 @@ export default function Hero() {
           </motion.p>
           <div style={{ overflow: 'hidden' }}>
             <motion.p
-              initial={{ x: 100, opacity: 0 }}
-              animate={{
-                x: 0,
-                opacity: 1,
-              }}
+              initial={{ opacity: 0, x: 10, y: 10 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ type: 'spring', duration: 3 }}
               className="title__tag"
             >

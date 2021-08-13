@@ -82,7 +82,7 @@ export default function WhyChooseUs() {
           <Grid item xs={12} sm={6} md={6}>
             <div>
               <motion.p initial={{ x: '100vw' }} animate={titleAnimation}>
-                Why start your study abroad journey with <span className="colorizer">StudyGlo</span>
+                Why start your study abroad journey with <span className="colorizer">StudyOvs</span>
               </motion.p>
               <motion.div initial={{ x: '100vw' }} animate={btnAnimation}>
                 <OutlinedButton

@@ -156,7 +156,7 @@ const item = {
 }
 
 export default function RecentArticles() {
-  const { inView, ref } = useInView({ threshold: 0.2 })
+  const { inView, ref } = useInView({ threshold: 0.1 })
   const caption = useAnimation()
   const btnCta = useAnimation()
   const containerAnimation = useAnimation()
@@ -227,7 +227,7 @@ export default function RecentArticles() {
             whileHover={{
               color: '#f4863a',
               transition: {
-                duration: 1,
+                duration: 0.5,
               },
             }}
             className="articles-cta"
@@ -240,7 +240,7 @@ export default function RecentArticles() {
                 x: [-5, 5],
                 transition: {
                   type: 'springs',
-                  duration: 0.5,
+                  duration: 0.6,
                   mass: 0.2,
                   stiffness: 0.1,
                   yoyo: Infinity,

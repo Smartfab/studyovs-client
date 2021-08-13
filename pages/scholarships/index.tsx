@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import ScholashipCard from '../../components/shared/ScholarshipCard'
 import Layout from '../../components/shared/Layout'

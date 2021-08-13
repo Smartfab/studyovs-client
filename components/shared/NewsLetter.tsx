@@ -16,18 +16,19 @@ export default function NewsLetter() {
   const [email, setEmail] = useState<string>('')
   const { ip, device } = useAnalytics()
   const { mutateAsync, isLoading } = useMutation(addEmailToNewsletter)
-  const { inView, ref } = useInView()
+  const { inView, ref } = useInView({ threshold: 0.1 })
   const [emailError, setEmailError] = useState<string>('')
   const containerAnimation = useAnimation()
 
   useEffect(() => {
     if (inView) {
       containerAnimation.start({
+        opacity: 1,
+        x: 0,
         y: 0,
         transition: {
           type: 'spring',
           duration: 1,
-          stiffness: 200,
         },
       })
     }
@@ -56,7 +57,7 @@ export default function NewsLetter() {
   }
   return (
     <PaddingResizer>
-      <Styles ref={ref} initial={{ y: 200 }} animate={containerAnimation}>
+      <Styles ref={ref} initial={{ opacity: 0, x: 10, y: 10 }} animate={containerAnimation}>
         <h1 className="title">Subscribe to our Newsletter</h1>
         <p className="caption">
           Get latest updates and news about scholarship and your dream universities abroad
