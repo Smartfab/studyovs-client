@@ -43,7 +43,7 @@ export default function Articles() {
         <PageHeader imgUrl="/articles__icon.svg" title="Blogs" />
         {isSuccess && query.blogs.map((post) => <BlogCard key={post.slug} post={post} />)}
         {isLoading && <LoadingState message="Loading Blogs" />}
-        {isSuccess && !query.blogs.length && <NotFound message="No Blog Found" />}
+        {isSuccess && !query.blogs.length ? <NotFound message="No Blog Found" /> : null}
         {isError && <ServerError error={error} />}
         <QueryPagination
           nextPage={handleNextPage}

@@ -14,6 +14,7 @@ import capitalizeFirstLetter from '../../utils/capitalize-first-letter'
 import dateFormatter from '../../utils/date-formatter'
 import recordBlogView from '../../actions/analytics/record-blog-view'
 import { useAnalytics } from '../../context/analytics'
+import NotFound from '../../components/shared/NotFound'
 
 const Styles = styled.div`
   .blog__wrapper {
@@ -75,7 +76,7 @@ export default function PostDetails() {
   const { ip, device } = useAnalytics()
   const router = useRouter()
   const { slug } = router.query
-  const { isLoading, data: post, error, isError } = useQuery(['postDetails', slug], () =>
+  const { isLoading, isSuccess, data: post, error, isError } = useQuery(['postDetails', slug], () =>
     getArticle(slug as string)
   )
   useEffect(() => {
@@ -132,6 +133,7 @@ export default function PostDetails() {
         )}
         {isLoading && <LoadingState style={{ minHeight: '500px' }} message="Loading Post" />}
         {isError && error && <ServerError error={error} />}
+        {isSuccess && !post && <NotFound message="No Blog Found" />}
       </Layout>
     </Styles>
   )
