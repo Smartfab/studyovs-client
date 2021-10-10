@@ -21,8 +21,8 @@ export default function paymentValidation(fields: PaymentI) {
   if (!amount) {
     errors.amount = 'Amount is required'
   }
-  if (amount < 1000) {
-    errors.amount = 'Minimun amount allowed is 1000'
+  if (amount < 100) {
+    errors.amount = 'Minimun amount allowed is 100'
   }
   if (!reason) {
     errors.reason = 'Reason for making payment is required'
