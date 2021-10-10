@@ -18,6 +18,8 @@ const Styles = styled.div`
   top: 0;
   z-index: 999;
   width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #80808033;
   .nav__item {
     margin-left: 27px;
     font-weight: 400;

@@ -84,7 +84,7 @@ export default function GeneralAlert() {
   // if (!show) return null
   return (
     <>
-      <p>Hello</p>
+      {/* <p>Hello</p> */}
       {/* {alert ? (
         <>
           <Styles>

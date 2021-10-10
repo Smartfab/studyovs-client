@@ -8,8 +8,9 @@ import { useAnalytics } from '../../context/analytics'
 const Styles = styled.div`
   position: relative;
   .children {
-    margin-top: 62px;
+    /* margin-top: 62px; */
     min-height: 75vh;
+    margin-top: 80px;
   }
 `
 export default function Layout({

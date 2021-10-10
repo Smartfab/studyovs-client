@@ -79,15 +79,30 @@ export default function ContactIndexPage() {
               <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
                 <ContactCard
                   title="Address"
-                  text="1234 Street Adress City Address, 1234"
+                  texts={[
+                    '1043 Garland Ave San Jose, CA 95126-3159. United States',
+                    '7 Greys Court, Kingsland Grange, Warrington, WA1 4SH. United Kingdom',
+                  ]}
                   icon={<TiLocation />}
                 />
               </Grid>
               <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                <ContactCard title="Phone" text="(00)1234 5678" icon={<AiFillPhone />} />
+                <ContactCard
+                  title="Phone"
+                  texts={['(00)1234 5678', '(00)1234 5678 (Whatsapp Only)']}
+                  icon={<AiFillPhone />}
+                />
               </Grid>
               <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                <ContactCard title="E-mail" text="contact@studyovs.com" icon={<MdEmail />} />
+                <ContactCard
+                  title="E-mail"
+                  texts={[
+                    'contact@studyovs.com',
+                    'corporate@studyovs.com',
+                    'documents@studyovs.com',
+                  ]}
+                  icon={<MdEmail />}
+                />
               </Grid>
             </Grid>
           </div>
