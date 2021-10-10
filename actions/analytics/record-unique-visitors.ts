@@ -28,6 +28,6 @@ export default async function recordUniqueVisitor({
       }
     }
   } catch (error) {
-    console.log(error.message)
+    // console.log(error.message)
   }
 }

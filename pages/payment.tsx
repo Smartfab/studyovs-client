@@ -4,7 +4,6 @@ import PageHeader from '../components/shared/PageHeader'
 import config from '../config/config'
 import Head from 'next/head'
 import ColumnResizer from '../components/shared/ColumnResizer'
-import { usePaystackPayment } from 'react-paystack'
 import { Grid } from '@material-ui/core'
 import InputField from '../components/forms/InputField'
 import OutlinedButton from '../components/shared/OutlinedButton'
@@ -14,6 +13,10 @@ import { useMutation } from 'react-query'
 import makePayment from '../actions/make-payments'
 import { toast } from 'react-toastify'
 import InputErrorsSummary from '../components/shared/InputErrorsSummary'
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3'
+import router from 'next/router'
+
+const flutterWaveKey = config.payment.flutterwave.publicKey
 
 export default function PaymentIndexPage() {
   const { mutateAsync, isLoading } = useMutation(makePayment)
@@ -32,12 +35,27 @@ export default function PaymentIndexPage() {
     amount: '',
     reason: '',
   })
-  const paystackConfig = {
-    email,
-    amount: amount * 100,
-    publicKey: config.payment.paystack.publicKey,
+
+  const flutterPaymentconfig = {
+    public_key: flutterWaveKey,
+    tx_ref: email,
+    amount: amount,
+    currency: 'NGN',
+    payment_options: 'card,mobilemoney,ussd',
+    customer: {
+      email: email,
+      phonenumber: email,
+      name: `${firstName} ${lastName}}`,
+    },
+    customizations: {
+      title: 'Studyovs Agency',
+      description: reason,
+      logo:
+        'https://res.cloudinary.com/odemru-technologies/image/upload/v1633887269/studyovs/wmp0o1lxhgfoydlgy0hl.png',
+    },
   }
-  const initializePayment = usePaystackPayment(paystackConfig)
+
+  const handleFlutterPayment = useFlutterwave(flutterPaymentconfig)
   const onSuccess = async (reference) => {
     const paymentDetails = {
       firstName,
@@ -45,8 +63,8 @@ export default function PaymentIndexPage() {
       email,
       reason,
       amount: Number(amount),
-      processor: 'paystack',
-      reference: reference.reference,
+      processor: 'flutterwave',
+      reference: reference.flw_ref,
       currency: 'NGN',
       service: 'payment',
     }
@@ -54,6 +72,7 @@ export default function PaymentIndexPage() {
       onSuccess: (data) => {
         toast.success(data)
         setValues({ email: '', firstName: '', lastName: '', amount: null, reason: '' })
+        router.push('/')
       },
     })
   }
@@ -62,13 +81,20 @@ export default function PaymentIndexPage() {
     setInputErrors((prev) => ({ ...prev, [e.target.name]: '' }))
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
-  const handleSubmit = () => {
+
+  const handleSubmit = async () => {
     const validation = paymentValidation(values)
     if (validation.isError) {
       setInputErrors(validation.errors)
       return null
     }
-    initializePayment(onSuccess)
+    handleFlutterPayment({
+      callback: async (value) => {
+        await onSuccess(value)
+        closePaymentModal()
+      },
+      onClose: () => {},
+    })
   }
   return (
     <>
