@@ -13,7 +13,7 @@ const Styles = styled.div`
   .details__title {
     margin-top: 0;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
   }
   .details__text {
     font-size: 13px;
@@ -26,7 +26,7 @@ export default function ContactCard({
   icon,
 }: {
   title: string
-  texts: string[]
+  texts: React.ReactNode[]
   icon: React.ReactNode
 }) {
   return (
@@ -36,9 +36,7 @@ export default function ContactCard({
         <div className="contact-card__details">
           <h5 className="details__title">{title}</h5>
           {texts.map((text, index) => (
-            <p key={text + index} className="details__text">
-              {text}
-            </p>
+            <div key={index}>{text}</div>
           ))}
         </div>
       </div>

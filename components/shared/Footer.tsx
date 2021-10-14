@@ -13,12 +13,20 @@ const Styles = styled.div`
   color: #fff;
   z-index: 999999;
   margin-top: 30px;
+
   .footer-links {
     display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+
+    > * {
+      &:first-child {
+        margin-right: 40px;
+      }
+    }
   }
   .footer-link-column {
     display: flex;
-    margin-left: 20px;
     flex-direction: column;
     @media (max-width: 700px) {
       flex-direction: row;
@@ -28,7 +36,7 @@ const Styles = styled.div`
   .footer-links__item {
     cursor: pointer;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 126.5%;
     :hover {
       font-weight: bold;
@@ -39,6 +47,12 @@ const Styles = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 30px 0;
+    > * {
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
   .footer-socials {
@@ -92,6 +106,34 @@ const Styles = styled.div`
       color: #f4863a;
     }
   }
+  .address__heading {
+    margin-top: 0;
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    color: #bcbcbc;
+  }
+  .address__text {
+    margin-top: 0;
+    line-height: 30px;
+  }
+  .item-wrapper {
+    /* width: 200px; */
+  }
+  @media (max-width: 700px) {
+    .item-wrapper {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid gray;
+      margin-top: 20px;
+      width: auto;
+    }
+    .footer {
+      > * {
+        margin-right: 0;
+      }
+    }
+  }
 `
 export default function Footer() {
   const columnOneLinks: Array<{ title: string; url: string }> = [
@@ -136,25 +178,48 @@ export default function Footer() {
                 </span>
               ))}
             </div>
+            <p>hello@studyovs.com</p>
+            <p style={{ margin: 0 }}>corporate@studyovs.com</p>
           </div>
-          <div className="footer-links">
-            <div className="footer-link-column">
-              {columnOneLinks.map((item) => (
-                <span key={uuidv4()} className="footer-links__item">
-                  <Link href={`/${item.url}`}>
-                    <a>{item.title}</a>
-                  </Link>
-                </span>
-              ))}
-            </div>
-            <div className="footer-link-column">
-              {columnTwoLinks.map((item) => (
-                <span key={uuidv4()} className="footer-links__item">
-                  <Link href={`/${item.url}`}>
-                    <a>{item.title}</a>
-                  </Link>
-                </span>
-              ))}
+          <div className="item-wrapper">
+            <h2 className="address__heading">California</h2>
+            <p className="address__text">
+              1043 Garland Ave, <br />
+              San Jose, <br />
+              CA 95126-3159,
+              <br /> United States.
+            </p>
+          </div>
+          <div className="item-wrapper">
+            <h2 className="address__heading">Cheshire</h2>
+            <p className="address__text">
+              7 Greys Court, <br />
+              Kingsland Grange, <br />
+              Warrington, WA1 4SH, <br />
+              United Kingdom
+            </p>
+          </div>
+          <div className="item-wrapper">
+            <h2 className="address__heading">Quick Links</h2>
+            <div className="footer-links">
+              <div className="footer-link-column">
+                {columnOneLinks.map((item) => (
+                  <span key={uuidv4()} className="footer-links__item">
+                    <Link href={`/${item.url}`}>
+                      <a>{item.title}</a>
+                    </Link>
+                  </span>
+                ))}
+              </div>
+              <div className="footer-link-column">
+                {columnTwoLinks.map((item) => (
+                  <span key={uuidv4()} className="footer-links__item">
+                    <Link href={`/${item.url}`}>
+                      <a>{item.title}</a>
+                    </Link>
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

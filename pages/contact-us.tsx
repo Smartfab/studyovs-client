@@ -13,12 +13,12 @@ import supportValidation from '../utils/support.validation'
 import submitSupportTicket from '../actions/submit-support-ticket'
 import { SupportI } from '../interfaces/support.interface'
 import TextField from '../components/forms/TextField'
-import { TiLocation } from 'react-icons/ti'
 import { AiFillPhone } from 'react-icons/ai'
 import { MdEmail } from 'react-icons/md'
 import styled from 'styled-components'
 import ContactCard from '../components/shared/ContactCard'
 import InputErrorsSummary from '../components/shared/InputErrorsSummary'
+import Addresses from '../components/Addresses'
 
 const Styles = styled.div`
   .contacts {
@@ -76,30 +76,37 @@ export default function ContactIndexPage() {
         <ColumnResizer>
           <div className="contacts">
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                <ContactCard
-                  title="Address"
-                  texts={[
-                    '1043 Garland Ave San Jose, CA 95126-3159. United States',
-                    '7 Greys Court, Kingsland Grange, Warrington, WA1 4SH. United Kingdom',
-                  ]}
-                  icon={<TiLocation />}
-                />
+              <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
+                <Addresses />
               </Grid>
-              <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
+              <Grid item xs={12} sm={3} md={3} lg={3} xl={3}>
                 <ContactCard
                   title="Phone"
-                  texts={['(00)1234 5678', '(00)1234 5678 (Whatsapp Only)']}
+                  texts={[
+                    <div>
+                      <h4 style={{ color: 'gray', marginBottom: 10 }}>USA</h4>
+                      <span style={{ fontSize: '13px' }}>(00)1234 5678</span>
+                    </div>,
+                    <div>
+                      <h4 style={{ color: 'gray', marginBottom: 10, marginTop: 10 }}>UK</h4>
+                      <span style={{ fontSize: '13px' }}>(00)1234 5678</span>
+                    </div>,
+                  ]}
                   icon={<AiFillPhone />}
                 />
               </Grid>
-              <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
+              <Grid item xs={12} sm={3} md={3} lg={3} xl={3}>
                 <ContactCard
                   title="E-mail"
                   texts={[
-                    'contact@studyovs.com',
-                    'corporate@studyovs.com',
-                    'documents@studyovs.com',
+                    <div>
+                      <h4 style={{ color: 'gray', marginBottom: 10, marginTop: 10 }}>Enquiries</h4>
+                      <span style={{ fontSize: '13px' }}>hello@studyovs.com</span>
+                    </div>,
+                    <div>
+                      <h4 style={{ color: 'gray', marginBottom: 10, marginTop: 10 }}>Corporate</h4>
+                      <span style={{ fontSize: '13px' }}>corporate@studyovs.com</span>
+                    </div>,
                   ]}
                   icon={<MdEmail />}
                 />
